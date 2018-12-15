@@ -20,7 +20,7 @@ train_loader = torch.utils.data.DataLoader(
     dataset=train_dataset, batch_size=50, shuffle=True)
 
 # Model
-model = models.resnet152(pretrained=False)
+model = models.resnet18(pretrained=False)
 
 # Train
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
