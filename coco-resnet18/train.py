@@ -43,6 +43,8 @@ for epoch in range(num_epochs):
         data_times.append(time.time() - start)
         start = time.time()
         step += 1
+        if step == total_step:
+            break
 
         images = images.to(device)
         labels = torch.ones([50, 1000])
@@ -56,6 +58,7 @@ for epoch in range(num_epochs):
         optimizer.step()
         compute_times.append(time.time() - start)
         print("Step = " + str(step) + " out of " + str(total_step))
+        start = time.time()
 
     with open('logs.csv', 'w', newline='') as logfile:
         logwriter = csv.writer(
