@@ -10,7 +10,7 @@ n_bins = 20
 # Get data and compute times
 data_times = []
 compute_times = []
-with open("cifar10-resnet152.csv") as csvfile:
+with open("logs.csv") as csvfile:
     reader = csv.reader(csvfile)
     for row in reader:
         data_times.append(float(row[0]))
@@ -26,8 +26,8 @@ axs[1].set_title("Compute Time")
 axs[1].set_xlabel("Frequency")
 axs[1].set_ylabel("Time")
 
-axs[0].hist(data_times, bins=50, range=(0.5, 1.0))
-axs[1].hist(compute_times, bins=50, range=(0.5, 1.0))
+axs[0].hist(data_times, bins=10)
+axs[1].hist(compute_times, bins=10)
 print("Data Time statistics:")
 print("Mean = " + str(stat.mean(data_times)))
 print("Median = " + str(stat.median(data_times)))
