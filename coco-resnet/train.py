@@ -12,15 +12,15 @@ transform = transforms.Compose(
      transforms.ToTensor()])
 
 train_dataset = datasets.CocoDetection(
-    root='../../../data/cocostuff/dataset/images/train2017',
-    annFile='../../../data/cocostuff/dataset/annotations/stuff_train2017.json',
+    root='/mnt/hdd-4tb/abhay/cocostuff/dataset/images/train2017',
+    annFile='/mnt/hdd-4tb/abhay/cocostuff/dataset/annotations/stuff_train2017.json',
     transform=transform)
 
 train_loader = torch.utils.data.DataLoader(
-    dataset=train_dataset, batch_size=3, shuffle=True)
+    dataset=train_dataset, batch_size=50, shuffle=True)
 
 # Model
-model = models.resnet18(pretrained=False)
+model = models.resnet152(pretrained=False)
 
 # Train
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -45,7 +45,7 @@ for epoch in range(num_epochs):
         step += 1
 
         images = images.to(device)
-        labels = torch.ones([3, 1000])
+        labels = torch.ones([50, 1000])
         labels = labels.to(device)
 
         outputs = model(images)
