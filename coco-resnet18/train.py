@@ -17,7 +17,7 @@ train_dataset = datasets.CocoDetection(
     transform=transform)
 
 train_loader = torch.utils.data.DataLoader(
-    dataset=train_dataset, batch_size=50, shuffle=True)
+    dataset=train_dataset, batch_size=50, shuffle=True, pin_memory=True)
 
 # Model
 model = models.resnet18(pretrained=False)
